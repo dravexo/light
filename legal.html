@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal & Privacy – PocketBattle</title>
+  <meta name="description" content="Privacy policy, terms and conditions, disclaimer, and DMCA information for the APK website.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="canonical" href="https://example.com/legal.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Legal & System Information – PocketBattle">
+  <meta property="og:description" content="Review privacy, terms, disclaimer, and DMCA information.">
+  <meta property="og:url" content="https://example.com/legal.html">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-mark">PB</span><span>PocketBattle</span></a>
+      <nav class="nav-links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="download.html">Download</a><a class="active" href="legal.html">Legal</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section legal-hero"><div class="container narrow"><div class="section-heading center"><span class="eyebrow">LEGAL & SYSTEM INFO</span><h1>Policies and compliance</h1><p>Replace the placeholder text below with policies reviewed for your jurisdiction, publisher status, ad partners, and data practices.</p></div></div></section>
+
+    <section class="section compact-section"><div class="container narrow"><div class="tabs" role="tablist" aria-label="Legal sections">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="privacyPanel" data-tab="privacyPanel">Privacy</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="termsPanel" data-tab="termsPanel">Terms</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="dmcaPanel" data-tab="dmcaPanel">Disclaimer / DMCA</button>
+    </div>
+
+    <div class="tab-panels panel">
+      <section class="tab-panel active" id="privacyPanel" role="tabpanel"><h2 id="privacy">Privacy Policy</h2><p><strong>Last updated:</strong> Replace with the actual date.</p><p>This template describes a generic privacy page. State exactly what information you collect, why you collect it, your retention period, third-party providers, ad/analytics technologies, user rights, and contact method.</p><h3>Cookies</h3><p>Disclose essential cookies, analytics cookies, advertising technologies, consent tools, and how users can change their preferences.</p><h3>Contact</h3><p>Replace with your support/privacy email and business address as required by applicable law.</p></section>
+
+      <section class="tab-panel" id="termsPanel" role="tabpanel" hidden><h2 id="terms">Terms & Conditions</h2><p>Describe accepted use of the website, download conditions, intellectual-property rules, warranty limitations, external links, account rules if any, jurisdiction, and how changes are announced.</p><h3>Authorized Distribution</h3><p>Only distribute software you created, own, or are explicitly authorized to distribute. Do not imply affiliation with a publisher when none exists.</p><h3>Availability</h3><p>Downloads and mirrors may be changed or removed at any time. Keep status, version, and file integrity information accurate.</p></section>
+
+      <section class="tab-panel" id="dmcaPanel" role="tabpanel" hidden><h2 id="dmca">Disclaimer & DMCA</h2><p>Use this section to explain ownership and reporting procedures. Replace the placeholder with your actual designated agent/contact information and jurisdiction-specific process.</p><h3>Copyright complaints</h3><p>Provide a clear takedown process and request that complainants identify the copyrighted work, allegedly infringing URL, contact details, and the required good-faith statements under applicable law.</p><h3>Third-party trademarks</h3><p>Game titles, logos, and trademarks remain the property of their respective owners. Remove this paragraph or tailor it to your actual rights and licenses.</p></section>
+    </div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-wrap"><div><strong>PocketBattle</strong><p>Policy template – customize before launch.</p></div><div class="footer-links"><a href="index.html">Home</a><a href="download.html">Download</a></div></div></footer>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div><strong>Cookies & privacy</strong><p>This demo stores your consent choice locally. Add your actual consent tooling if you use non-essential cookies, analytics, or advertising.</p></div>
+    <div class="cookie-actions"><button class="btn btn-secondary btn-small" id="cookieReject">Reject optional</button><button class="btn btn-primary btn-small" id="cookieAccept">Accept</button></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.tab');
+      const panels = document.querySelectorAll('.tab-panel');
+      tabs.forEach(tab => tab.addEventListener('click', () => {
+        const id = tab.dataset.tab;
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(id);
+        panel.hidden = false;
+        panel.classList.add('active');
+        history.replaceState(null, '', `#${id.replace('Panel','')}`);
+      }));
+
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        const target = document.querySelector(`.tab[data-tab="${hash}Panel"]`);
+        if (target) target.click();
+      }
+    });
+  </script>
+</body>
+</html>
